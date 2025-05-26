@@ -4,8 +4,6 @@ Tic-Tac-Toe, Python (Flask) ile geliştirilmiş, modern ve kullanıcı dostu bir
 Oyun, hem tek oyunculu (AI ile) hem de iki oyunculu modda oynanabilir.  
 Proje, modern web teknolojileri ve en iyi kullanıcı deneyimi pratikleri ile geliştirilmiştir.
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/osmandemir2533/Flask-Tic-Tac-Toe)
-
 ---
 
 ## 🚀 Projeyi Çalıştırmak İçin
@@ -21,8 +19,8 @@ Projeyi çalıştırmak için aşağıdaki yazılımların yüklü olması gerek
 
 1. **Repoyu klonlayın**
 ```bash
-git clone https://github.com/osmandemir2533/Flask-Tic-Tac-Toe.git
-cd Flask-Tic-Tac-Toe
+git clone https://github.com/osmandemir2533/Tic-Tac-Toe.git
+cd Tic-Tac-Toe
 ```
 
 3. **Gerekli paketleri yükleyin**
@@ -76,17 +74,16 @@ Ana sayfa, oyunun başlangıç noktasıdır. Burada oyuncular:
 - İlk başlama sırasını belirleyebilir
 - AI ile oynamayı veya iki kişilik modu seçebilir
 
-> ![Ana Sayfa](screenshots/index.png)
-> *Ana sayfa ekran görüntüsü buraya eklenecek*
+> ![Ana Sayfa](https://github.com/user-attachments/assets/91e0000a-8b34-4639-9495-d53cceca65b1)
 
-### Oyun Sayfası (game.html)
+### AI Oyun Sayfası (game.html)
 AI ile oyun modunda kullanılan sayfa. Özellikler:
 - Dinamik oyun tahtası
 - AI düşünme animasyonu
 - Kazanma/beraberlik bildirimleri
 - Yeniden oynama seçeneği
 
-> ![Oyun Sayfası](screenshots/game.png)
+> ![AI Oyun Sayfası](https://github.com/user-attachments/assets/2022587f-3222-4574-be67-99d84ed9b902)
 > *Oyun sayfası ekran görüntüsü buraya eklenecek*
 
 ### İki Kişilik Oyun Sayfası (twoplayer.html)
@@ -96,8 +93,7 @@ AI ile oyun modunda kullanılan sayfa. Özellikler:
 - Kazanma/beraberlik bildirimleri
 - Yeniden oynama seçeneği
 
-> ![İki Kişilik Oyun](screenshots/twoplayer.png)
-> *İki kişilik oyun sayfası ekran görüntüsü buraya eklenecek*
+> ![İki Kişilik Oyun](https://github.com/user-attachments/assets/e0b05722-34d1-4dbb-8de8-aead74b7d8c1)
 
 ### Hakkında Sayfası (about.html)
 Projenin detaylı açıklamalarını içeren sayfa:
@@ -106,8 +102,7 @@ Projenin detaylı açıklamalarını içeren sayfa:
 - Algoritma açıklamaları
 - Geliştirici bilgileri
 
-> ![Hakkında Sayfası](screenshots/about.png)
-> *Hakkında sayfası ekran görüntüsü buraya eklenecek*
+> ![Hakkında Sayfası](https://github.com/user-attachments/assets/8712f48d-4e4e-43b5-9664-17e3de16c3bb)
 
 ### İletişim Sayfası (contact.html)
 Geliştirici ile iletişim kurulabilecek sayfa:
@@ -115,8 +110,7 @@ Geliştirici ile iletişim kurulabilecek sayfa:
 - Sosyal medya bağlantıları
 - İletişim formu
 
-> ![İletişim Sayfası](screenshots/contact.png)
-> *İletişim sayfası ekran görüntüsü buraya eklenecek*
+> ![İletişim Sayfası](https://github.com/user-attachments/assets/24bfd2c4-6d6c-4ea6-a5f2-5d0ee4bdbadb)
 
 ### Mobil Uyumluluk
 Tüm sayfalar responsive tasarıma sahiptir:
@@ -125,32 +119,26 @@ Tüm sayfalar responsive tasarıma sahiptir:
 - Dinamik menü sistemi
 - Esnek tahta boyutlandırma
 
-> ![Mobil Görünüm](screenshots/mobile.png)
-> *Mobil görünüm ekran görüntüsü buraya eklenecek*
+> ![Mobil Görünüm 1](https://github.com/user-attachments/assets/478f1763-56ba-4fee-8bce-a3376fbef6f4)
 
-### Oyun Tahtası Detayları
+> ![Mobil Görünüm 1](https://github.com/user-attachments/assets/be6191b7-9f06-460a-a8ff-33cb0dd2162b)
+
+> ![Mobil Görünüm 1](https://github.com/user-attachments/assets/ace9dd92-0669-4558-be42-7c2daa3f3fab)
+
+
+### Oyun İçi Ayrıntılar / Arayüz
 Farklı tahta boyutları için örnek görünümler:
 
-> ![3x3 Tahta](screenshots/board-3x3.png)
-> *3x3 tahta görünümü buraya eklenecek*
+> ![9x9 Tahta](https://github.com/user-attachments/assets/8cf85781-6cf3-463f-8aa2-d17d2ae13d7d)
 
-> ![4x4 Tahta](screenshots/board-4x4.png)
-> *4x4 tahta görünümü buraya eklenecek*
-
-> ![5x5 Tahta](screenshots/board-5x5.png)
-> *5x5 tahta görünümü buraya eklenecek*
-
-### Oyun Durumu Bildirimleri
 Çeşitli oyun durumları için bildirimler:
 
 > ![Kazanma Bildirimi](screenshots/win-notification.png)
 > *Kazanma bildirimi ekran görüntüsü buraya eklenecek*
 
-> ![Beraberlik Bildirimi](screenshots/draw-notification.png)
-> *Beraberlik bildirimi ekran görüntüsü buraya eklenecek*
-
-> ![AI Düşünüyor](screenshots/ai-thinking.png)
-> *AI düşünme animasyonu ekran görüntüsü buraya eklenecek*
+> ![Erken Beraberlik Bildirimi](https://github.com/user-attachments/assets/b9b73dc4-696b-46fb-8284-d7c4cb8b74c5)
+> 
+> ![AI Düşünüyor](https://github.com/user-attachments/assets/0070b215-4445-44a6-b9b2-9459eed0a53b)
 
 ---
 
