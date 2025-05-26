@@ -5,6 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İki Kişi Oyna - Tic-Tac-Toe</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .last-move {
+            background-color: #ffd700 !important;
+        }
+        table {
+            width: auto;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        td {
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+        td button {
+            width: 100%;
+            height: 100%;
+            font-size: 24px;
+            font-weight: bold;
+            border: 2px solid #1976d2;
+            background: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        td button:hover:not(:disabled) {
+            background: #e3f2fd;
+        }
+        td button:disabled {
+            cursor: not-allowed;
+        }
+        @media (max-width: 600px) {
+            td {
+                width: 50px;
+                height: 50px;
+            }
+            td button {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -50,6 +92,7 @@
                                 <input type="hidden" name="row" value="{{ i }}">
                                 <input type="hidden" name="col" value="{{ j }}">
                                 <button type="submit" {% if board[i][j] != ' ' or winner %} disabled {% endif %}
+                                    class="{% if last_move and last_move[0] == i and last_move[1] == j %}last-move{% endif %}"
                                     style="width:100%;height:100%;">
                                     {{ board[i][j] }}
                                 </button>
@@ -64,7 +107,8 @@
           <div class="result-modal">
             <h2>{{ winner }}</h2>
             <form action="/twoplayer" method="GET">
-              <button type="submit">Yeniden Oyna</button>
+                <input type="hidden" name="size" value="{{ size }}">
+                <button type="submit">Yeniden Oyna</button>
             </form>
             <form action="/end" method="POST">
               <button type="submit">Ana Sayfaya Dön</button>

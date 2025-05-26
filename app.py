@@ -850,56 +850,96 @@ def game_page():
         winner=None  # Eğer winner session'da tutuluyorsa onu da ekleyebilirsin
     )
 
+def check_winner(board):
+    n = len(board)
+    # Satırları kontrol et
+    for row in board:
+        if all(cell == row[0] for cell in row) and row[0] != ' ':
+            return f"{row[0]} Kazandı!"
+    
+    # Sütunları kontrol et
+    for col in range(n):
+        if all(board[row][col] == board[0][col] for row in range(n)) and board[0][col] != ' ':
+            return f"{board[0][col]} Kazandı!"
+    
+    # Ana çaprazı kontrol et
+    if all(board[i][i] == board[0][0] for i in range(n)) and board[0][0] != ' ':
+        return f"{board[0][0]} Kazandı!"
+    
+    # Yan çaprazı kontrol et
+    if all(board[i][n-1-i] == board[0][n-1] for i in range(n)) and board[0][n-1] != ' ':
+        return f"{board[0][n-1]} Kazandı!"
+    
+    return None
+
+def is_early_draw(board):
+    n = len(board)
+    lines = []
+    for i in range(n):
+        lines.append([board[i][j] for j in range(n)])  # Satır
+        lines.append([board[j][i] for j in range(n)])  # Sütun
+    lines.append([board[i][i] for i in range(n)])      # Ana çapraz
+    lines.append([board[i][n-1-i] for i in range(n)])  # Yan çapraz
+
+    # Her satır/sütun/çaprazda sadece tek oyuncunun kazanma ihtimali varsa oyun devam eder
+    for line in lines:
+        if (set(line) <= {'X', ' '} or set(line) <= {'O', ' '}):
+            return False
+    # Eğer tüm hatlarda iki oyuncu da varsa, kimse kazanamaz, erken beraberlik
+    return True
+
 @app.route('/twoplayer', methods=['GET', 'POST'])
 def twoplayer():
     if request.method == 'GET':
-        # Yeni iki kişilik oyun başlat
+        # Yeni oyun başlat veya yeniden başlat
         size = int(request.args.get('size', 3))
-        board = [[' ' for _ in range(size)] for _ in range(size)]
-        session['twoplayer'] = {
-            'board': board,
-            'current_player': 'X',
-            'size': size,
-            'game_over': False,
-            'winner': None
-        }
-        return render_template('twoplayer.html', board=board, current_player='X', size=size, winner=None)
+        session['board'] = [[' ' for _ in range(size)] for _ in range(size)]
+        session['current_player'] = 'X'
+        session['winner'] = None
+        session['last_move'] = None
+        session['size'] = size
     else:
-        # Hamle işle
-        data = session.get('twoplayer')
-        if not data:
-            return redirect(url_for('twoplayer'))
-        board = data['board']
-        current_player = data['current_player']
-        size = data['size']
-        winner = data.get('winner')
-        row = int(request.form['row'])
-        col = int(request.form['col'])
-        if board[row][col] == ' ' and not data['game_over']:
-            board[row][col] = current_player
+        # POST isteği - hamle yap
+        if 'board' not in session:
+            size = int(request.args.get('size', 3))
+            session['board'] = [[' ' for _ in range(size)] for _ in range(size)]
+            session['current_player'] = 'X'
+            session['winner'] = None
+            session['last_move'] = None
+            session['size'] = size
+        else:
+            size = session.get('size', 3)
+        
+        row = int(request.form.get('row'))
+        col = int(request.form.get('col'))
+        board = session['board']
+        
+        if board[row][col] == ' ' and not session.get('winner'):
+            board[row][col] = session['current_player']
+            session['last_move'] = (row, col)
+            
             # Kazanan kontrolü
-            def check_winner(board, player):
-                n = len(board)
-                for i in range(n):
-                    if all(board[i][j] == player for j in range(n)):
-                        return True
-                    if all(board[j][i] == player for j in range(n)):
-                        return True
-                if all(board[i][i] == player for i in range(n)):
-                    return True
-                if all(board[i][n-1-i] == player for i in range(n)):
-                    return True
-                return False
-            if check_winner(board, current_player):
-                data['game_over'] = True
-                data['winner'] = f"{current_player} Kazandı!"
-            elif all(cell != ' ' for row_ in board for cell in row_):
-                data['game_over'] = True
-                data['winner'] = "Beraberlik!"
+            winner = check_winner(board)
+            if winner:
+                session['winner'] = winner
             else:
-                data['current_player'] = 'O' if current_player == 'X' else 'X'
-        session['twoplayer'] = data
-        return render_template('twoplayer.html', board=board, current_player=data['current_player'], size=size, winner=data['winner'])
+                # Erken beraberlik kontrolü
+                if is_early_draw(board):
+                    session['winner'] = 'Erken Beraberlik!'
+                # Normal beraberlik kontrolü
+                elif all(cell != ' ' for row in board for cell in row):
+                    session['winner'] = 'Beraberlik!'
+                else:
+                    session['current_player'] = 'O' if session['current_player'] == 'X' else 'X'
+            
+            session['board'] = board
+    
+    return render_template('twoplayer.html', 
+                         board=session['board'],
+                         current_player=session['current_player'],
+                         winner=session.get('winner'),
+                         last_move=session.get('last_move'),
+                         size=size)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
