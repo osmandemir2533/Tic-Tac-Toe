@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Başlangıç</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="/" class="header-title-link"><span class="header-title">Tic-Tac-Toe</span></a>
+        </div>
+        <div class="header-right">
+            <div class="header-links desktop-menu">
+                <a href="/contact" class="header-link">İletişim</a>
+                <a href="/about" class="header-link">Hakkında</a>
+            </div>
+            <div class="header-settings desktop-menu">
+                <div class="settings-container">
+                    <button class="settings-icon" id="settingsIcon" title="Ayarlar">&#9881;</button>
+                    <div class="settings-dropdown" id="settingsDropdown">
+                        <button class="settings-btn settings-exit" onclick="closeTab()" type="button">Çıkış Yap</button>
+                        <button class="settings-btn settings-home" onclick="window.location.href='/'" type="button">Ana Sayfaya Dön</button>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="/contact" class="header-link">İletişim</a>
+                <a href="/about" class="header-link">Hakkında</a>
+                <button class="settings-btn settings-exit" onclick="closeTab()" type="button">Çıkış Yap</button>
+                <button class="settings-btn settings-home" onclick="window.location.href='/'" type="button">Ana Sayfaya Dön</button>
+            </div>
+        </div>
+    </header>
+    <div class="main-content">
+        <h1>Tic-Tac-Toe</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/start" method="POST">
+            <label for="size">Tahta Boyutu (n x n):</label>
+            <input type="number" id="size" name="size" value="3" min="3" max="10" required><br><br>
+            
+            <label for="start">İlk Başlamak İstiyor musunuz?</label><br>
+            <div class="radio-group">
+                <input type="radio" id="start1" name="start" value="1" checked> <label for="start1">Evet</label>
+                <input type="radio" id="start2" name="start" value="2"> <label for="start2">Hayır</label>
+            </div>
+            <br>
+            <button type="submit" class="start-btn">AI ile Oyna</button>
+        </form>
+        <form action="/twoplayer" method="GET" style="margin-top: 16px;">
+            <input type="number" name="size" value="3" min="3" max="10" required style="display:none;" id="twoplayer-size-input">
+            <button type="submit" class="twoplayer-btn blue">İki Kişi Oyna</button>
+        </form>
+    </div>
+    <footer>
+        <div class="footer-text"> Osman Demir</div>
+        <div class="footer-icons">
+            <a href="https://www.linkedin.com/in/osmandemir2533/" target="_blank" title="LinkedIn" class="footer-icon">
+                <svg fill="#0A66C2" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#fff"/><path d="M12.1 13.6h-2.6v8.3h2.6v-8.3zm-1.3-1.2c.8 0 1.3-.6 1.3-1.3 0-.7-.5-1.3-1.3-1.3s-1.3.6-1.3 1.3c0 .7.5 1.3 1.3 1.3zm3.2 1.2v8.3h2.5v-4.6c0-1.2.2-2.3 1.7-2.3 1.5 0 1.5 1.4 1.5 2.4v4.5h2.5v-4.8c0-2.4-.5-4.2-3.2-4.2-1.3 0-2.1.7-2.5 1.4h.1v-1.2h-2.6zm0 0"/></svg>
+            </a>
+            <a href="https://osmandemir2533.github.io/" target="_blank" title="Web Site" class="footer-icon">
+                <svg fill="#1976d2" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/osmandemir2533" target="_blank" title="GitHub" class="footer-icon">
+                <svg fill="#24292f" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#fff"/><path d="M16 6c-5.5 0-10 4.5-10 10 0 4.4 2.9 8.1 6.9 9.4.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1-.9-1.3-.9-1.3-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.8.8 2.2.6.1-.5.3-.8.5-1-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-2 1-2.7-.1-.2-.4-1.1.1-2.2 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3s1.7.1 2.5.3c1.9-1.3 2.7-1 2.7-1 .5 1.1.2 2 .1 2.2.6.7 1 1.6 1 2.7 0 3.7-2.3 4.6-4.5 4.8.3.3.6.8.6 1.7v2.5c0 .3.2.6.7.5 4-1.3 6.9-5 6.9-9.4 0-5.5-4.5-10-10-10z"/></svg>
+            </a>
+        </div>
+    </footer>
+    <script>
+        // Settings dropdown (masaüstü)
+        const settingsIcon = document.getElementById('settingsIcon');
+        const settingsDropdown = document.getElementById('settingsDropdown');
+        document.addEventListener('click', function(e) {
+            if (settingsIcon && settingsIcon.contains(e.target)) {
+                settingsDropdown.classList.toggle('show');
+            } else if (settingsDropdown && !settingsDropdown.contains(e.target)) {
+                settingsDropdown.classList.remove('show');
+            }
+        });
+        // Hamburger menü (mobil)
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburgerMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('show');
+        });
+        document.addEventListener('click', function(e) {
+            if (!hamburgerMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('show');
+            }
+        });
+        // Çıkış butonu sekmeyi kapatır
+        function closeTab() {
+            window.open('', '_self', '');
+            window.close();
+            setTimeout(function() {
+                alert('Tarayıcı güvenliği nedeniyle sekme kapatılamadı. Lütfen sekmeyi manuel olarak kapatın veya Ana Sayfa butonunu kullanın.');
+            }, 300);
+        }
+        // Tahta boyutu değişince iki kişi oyna formundaki inputu da güncelle
+        document.getElementById('size').addEventListener('input', function() {
+            document.getElementById('twoplayer-size-input').value = this.value;
+        });
+        // Sayfa yüklenince eşitle
+        document.getElementById('twoplayer-size-input').value = document.getElementById('size').value;
+    </script>
+</body>
+</html>
