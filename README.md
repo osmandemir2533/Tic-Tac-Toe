@@ -4,6 +4,10 @@ Tic-Tac-Toe, Python (Flask) ile geliştirilmiş, modern ve kullanıcı dostu bir
 Oyun, hem tek oyunculu (AI ile) hem de iki oyunculu modda oynanabilir.  
 Proje, modern web teknolojileri ve en iyi kullanıcı deneyimi pratikleri ile geliştirilmiştir.
 
+## 🎮 Canlı Demo
+
+Oyunu hemen oynamak için: [https://tic-tac-toe-2fjq.onrender.com](https://tic-tac-toe-2fjq.onrender.com)
+
 ---
 
 ## 🚀 Projeyi Çalıştırmak İçin
@@ -23,12 +27,12 @@ git clone https://github.com/osmandemir2533/Tic-Tac-Toe.git
 cd Tic-Tac-Toe
 ```
 
-3. **Gerekli paketleri yükleyin**
+2. **Gerekli paketleri yükleyin**
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Uygulamayı başlatın**
+3. **Uygulamayı başlatın**
 ```bash
 python app.py
 ```
@@ -84,7 +88,6 @@ AI ile oyun modunda kullanılan sayfa. Özellikler:
 - Yeniden oynama seçeneği
 
 > ![AI Oyun Sayfası](https://github.com/user-attachments/assets/2022587f-3222-4574-be67-99d84ed9b902)
-> *Oyun sayfası ekran görüntüsü buraya eklenecek*
 
 ### İki Kişilik Oyun Sayfası (twoplayer.html)
 İki oyuncunun aynı cihazda oynayabileceği mod. Özellikler:
@@ -127,17 +130,16 @@ Tüm sayfalar responsive tasarıma sahiptir:
 
 
 ### Oyun İçi Ayrıntılar / Arayüz
-Farklı tahta boyutları için örnek görünümler:
+Tahta boyutları için örnek görünüm:
 
 > ![9x9 Tahta](https://github.com/user-attachments/assets/8cf85781-6cf3-463f-8aa2-d17d2ae13d7d)
 
 Çeşitli oyun durumları için bildirimler:
 
-> ![Kazanma Bildirimi](screenshots/win-notification.png)
-> *Kazanma bildirimi ekran görüntüsü buraya eklenecek*
+> ![Kazanma Bildirimi](https://github.com/user-attachments/assets/20845ac9-6994-402d-b315-4a6360f77154)
 
 > ![Erken Beraberlik Bildirimi](https://github.com/user-attachments/assets/b9b73dc4-696b-46fb-8284-d7c4cb8b74c5)
-> 
+
 > ![AI Düşünüyor](https://github.com/user-attachments/assets/0070b215-4445-44a6-b9b2-9459eed0a53b)
 
 ---
@@ -355,6 +357,42 @@ Flask-Tic-Tac-Toe/
 ├── requirements.txt
 └── README.md
 ```
+
+---
+
+### Render'da Deploy Deneyimi
+
+Projeyi Render'da deploy etmek için şu adımları izledim:
+
+1. Öncelikle projeye gerekli production dosyalarını ekledim:
+   - `gunicorn` paketini yükledim: `pip install gunicorn`
+   - `requirements.txt` dosyasını güncelledim
+   - `Procfile` oluşturdum ve içine `web: gunicorn app:app` yazdım
+
+2. [Render.com](https://render.com)'da yeni bir hesap oluşturdum
+
+3. Dashboard'da "New +" butonuna tıklayıp "Web Service" seçtim
+
+4. GitHub repomu bağladım ve Tic-Tac-Toe projemi seçtim
+
+5. Deploy ayarlarını şu şekilde yaptım:
+   - Name: tic-tac-toe
+   - Environment: Python 3
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn app:app`
+   - Plan: Free
+
+6. "Create Web Service" butonuna tıkladım
+
+7. Render otomatik olarak GitHub repomdan kodu çekti ve deploy etti
+
+8. Birkaç dakika sonra uygulamam canlıya alındı ve şu adresten erişilebilir oldu:
+   [https://tic-tac-toe-2fjq.onrender.com](https://tic-tac-toe-2fjq.onrender.com)
+
+Deploy sırasında dikkat ettiğim noktalar:
+- Flask uygulamasının production ortamında çalışması için `gunicorn` kullanmak önemli
+- `requirements.txt` dosyasında tüm bağımlılıkların doğru versiyonlarla belirtilmesi gerekiyor
+- `Procfile` dosyası, Render'a uygulamanın nasıl başlatılacağını söylüyor
 
 ---
 
