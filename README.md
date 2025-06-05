@@ -424,4 +424,5 @@ Benimle her zaman iletişime geçebilirsiniz:
 ---
 
 > Proje, modern web standartlarına uygun olarak geliştirilmiştir.  
-> Hem güvenli hem de kullanıcı dostu bir oyun deneyimi sunar. 
+> Hem güvenli hem de kullanıcı dostu bir oyun deneyimi sunar.    
+
