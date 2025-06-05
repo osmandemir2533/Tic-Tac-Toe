@@ -38,7 +38,16 @@ class TicTacToe:
 
     def ai_move(self):
         if not self.game_over:
-            # Öncelikle: Rakibin kazanacağı hamle var mı, engelle!
+            # Öncelikle: AI'nın kazanacağı hamle var mı, bitir!
+            for i in range(self.n):
+                for j in range(self.n):
+                    if self.board[i][j] == ' ':
+                        self.board[i][j] = self.A2
+                        if self.check_winner(self.A2):
+                            self.current_player = self.A1
+                            return (i, j)
+                        self.board[i][j] = ' '
+            # Sonra: Rakibin kazanacağı hamle var mı, engelle!
             for i in range(self.n):
                 for j in range(self.n):
                     if self.board[i][j] == ' ':
@@ -125,16 +134,18 @@ class TicTacToe:
                 return 2
         empty_cells.sort(key=move_priority)
 
-        # Öncelikle kazanma ve bloklama hamlelerini bul
+        # Önce kendi kazanma hamlesini kontrol et
         for move in empty_cells:
             i, j = move
-            # Kazanma hamlesi
             self.board[i][j] = self.A2
             if self.check_winner(self.A2):
-                self.board[i][j] = ' '
+                # Hamleyi bırak, AI kazansın (geri alma yok)
                 return (i, j)
             self.board[i][j] = ' '
-            # Bloklama hamlesi
+
+        # Rakibin kazanma hamlesini kontrol et (sadece son hamle için)
+        for move in empty_cells:
+            i, j = move
             self.board[i][j] = self.A1
             if self.check_winner(self.A1):
                 self.board[i][j] = ' '
@@ -615,20 +626,20 @@ class TicTacToe:
     def check_winner(self, player):
         # Satırlar
         for row in self.board:
-            if all(cell == player for cell in row) and all(cell != ' ' for cell in row):
+            if all(cell == player for cell in row):
                 return True
         # Sütunlar
         for col in range(self.n):
             col_cells = [self.board[row][col] for row in range(self.n)]
-            if all(cell == player for cell in col_cells) and all(cell != ' ' for cell in col_cells):
+            if all(cell == player for cell in col_cells):
                 return True
         # Ana çapraz
         diag1 = [self.board[i][i] for i in range(self.n)]
-        if all(cell == player for cell in diag1) and all(cell != ' ' for cell in diag1):
+        if all(cell == player for cell in diag1):
             return True
         # Yan çapraz
         diag2 = [self.board[i][self.n - 1 - i] for i in range(self.n)]
-        if all(cell == player for cell in diag2) and all(cell != ' ' for cell in diag2):
+        if all(cell == player for cell in diag2):
             return True
         return False
 
