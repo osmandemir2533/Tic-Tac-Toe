@@ -121,7 +121,7 @@ Projenin detaylı açıklamalarını içeren sayfa:
 - Algoritma açıklamaları
 - Geliştirici bilgileri
 
-> ![Hakkında Sayfası](https://github.com/user-attachments/assets/8712f48d-4e4e-43b5-9664-17e3de16c3bb)
+> ![Hakkında Sayfası](https://github.com/user-attachments/assets/e81111e9-f809-4675-8a4f-0331ba7f039b)
 
 ### İletişim Sayfası (contact.html)
 Geliştirici ile iletişim kurulabilecek sayfa:
@@ -129,7 +129,7 @@ Geliştirici ile iletişim kurulabilecek sayfa:
 - Sosyal medya bağlantıları
 - İletişim formu
 
-> ![İletişim Sayfası](https://github.com/user-attachments/assets/24bfd2c4-6d6c-4ea6-a5f2-5d0ee4bdbadb)
+> ![İletişim Sayfası](https://github.com/user-attachments/assets/858892ec-bf1d-4ef5-a308-197e880b8800)
 
 ### Mobil Uyumluluk
 Tüm sayfalar responsive tasarıma sahiptir:
@@ -138,17 +138,17 @@ Tüm sayfalar responsive tasarıma sahiptir:
 - Dinamik menü sistemi
 - Esnek tahta boyutlandırma
 
-> ![Mobil Görünüm 1](https://github.com/user-attachments/assets/478f1763-56ba-4fee-8bce-a3376fbef6f4)
-
-> ![Mobil Görünüm 1](https://github.com/user-attachments/assets/be6191b7-9f06-460a-a8ff-33cb0dd2162b)
-
-> ![Mobil Görünüm 1](https://github.com/user-attachments/assets/ace9dd92-0669-4558-be42-7c2daa3f3fab)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/478f1763-56ba-4fee-8bce-a3376fbef6f4" width="300" />
+  <img src="https://github.com/user-attachments/assets/be6191b7-9f06-460a-a8ff-33cb0dd2162b" width="300" />
+  <img src="https://github.com/user-attachments/assets/896014ac-cfcf-4a91-9f0d-521c0298af33" width="317" />
+</p>
 
 
 ### Oyun İçi Ayrıntılar / Arayüz
 Tahta boyutları için örnek görünüm:
 
-> ![9x9 Tahta](https://github.com/user-attachments/assets/8cf85781-6cf3-463f-8aa2-d17d2ae13d7d)
+> <img src="https://github.com/user-attachments/assets/8cf85781-6cf3-463f-8aa2-d17d2ae13d7d" width="480" />
 
 Çeşitli oyun durumları için bildirimler:
 
@@ -156,7 +156,7 @@ Tahta boyutları için örnek görünüm:
 
 > ![Erken Beraberlik Bildirimi](https://github.com/user-attachments/assets/b9b73dc4-696b-46fb-8284-d7c4cb8b74c5)
 
-> ![AI Düşünüyor](https://github.com/user-attachments/assets/0070b215-4445-44a6-b9b2-9459eed0a53b)
+> <img src="https://github.com/user-attachments/assets/0070b215-4445-44a6-b9b2-9459eed0a53b" width="480" />
 
 ---
 
