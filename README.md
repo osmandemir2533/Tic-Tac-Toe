@@ -11,7 +11,7 @@ Oyunu hemen oynamak için: [https://tic-tac-toe-2fjq.onrender.com](https://tic-t
 ---
 
 ## ❓ Nasıl Oynanır
- 
+  
 • Tahta boyutunu 3x3 ile 10x10 arasında seçin.  
 • Oyun modunu belirleyin:  
 |__ Bilgisayara karşı (AI ile)  
