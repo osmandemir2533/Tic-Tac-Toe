@@ -10,6 +10,22 @@ Oyunu hemen oynamak için: [https://tic-tac-toe-2fjq.onrender.com](https://tic-t
 
 ---
 
+## ❓ Nasıl Oynanır
+ 
+• Tahta boyutunu 3x3 ile 10x10 arasında seçin.  
+• Oyun modunu belirleyin:  
+|__ Bilgisayara karşı (AI ile)  
+|__ İki kişilik mod                
+• İlk hamleyi kim yapacaksa seçin.  
+• "Başla" butonuna tıklayarak oyunu başlatın.  
+• Sıranız geldiğinde tahtadaki boş hücreye tıklayın.  
+• Satır, sütun veya çaprazda kazanan kombinasyonu yapmaya çalışın.  
+• Oyun berabere biterse veya biri kazanırsa sonucu görebilirsiniz.  
+• Yeniden oynamak için "Yeniden Oyna" butonuna basın.
+> Amaç, yatay, dikey veya çapraz olarak aynı sembolü arka arkaya yerleştirmektir. Aynı sembolleri sırasıyla yerleştiren oyuncu oyunu kazanır.
+
+---
+
 ## 🚀 Projeyi Çalıştırmak İçin
 
 ### Gereksinimler

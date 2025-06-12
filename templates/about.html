@@ -40,12 +40,31 @@
         <h1>Proje Hakkında</h1>
         <h2>Genel Bakış</h2>
         <p>Bu proje, Python (Flask) ile geliştirilmiş, dinamik boyutlu (3x3'ten 10x10'a kadar) bir Tic-Tac-Toe (XOX) oyunudur. Kullanıcı, oyun tahtasının boyutunu seçebilir ve isterse ilk hamleyi yapabilir. Oyun, hem masaüstü hem mobilde modern ve kullanıcı dostu bir arayüze sahiptir. İki farklı oyun modu bulunmaktadır: Tek oyunculu (AI ile) ve iki oyunculu (arkadaşınızla).</p>
+        <h2>Nasıl Oynanır</h2>
+        <ul>
+            <li>Oyun, klasik XOX (Tic-Tac-Toe) mantığıyla çalışır. Tahta boyutu 3x3'ten 10x10'a kadar seçilebilir.</li>
+            <li>Oyun modunu belirleyebilirsiniz:
+                <ul>
+                    <li>Bilgisayara karşı (AI ile)</li>
+                    <li>İki kişilik mod</li>
+                </ul>
+            </li>
+            <li>İlk hamleyi kim yapacaksa seçebilirsiniz.</li>
+            <li>Oyunu başlatmak için "Başla" butonuna tıklayın.</li>
+            <li>Sıra geldiğinde tahtadaki boş hücreye tıklayarak hamle yapın.</li>
+            <li>Satır, sütun veya çaprazda kazanan kombinasyonu yapmaya çalışın.</li>
+            <li>Oyun berabere biterse veya biri kazanırsa sonucu görebilirsiniz.</li>
+            <li>Yeniden oynamak için "Yeniden Oyna" butonuna basın.</li>
+        </ul>
+
+        <h3>Amaç</h3>
+        <p>Amaç, yatay, dikey veya çapraz olarak aynı sembolü arka arkaya yerleştirmektir. Aynı sembolleri sırasıyla yerleştiren oyuncu oyunu kazanır.</p>
         <h2>Oyun Modları</h2>
         <h3>Tek Oyunculu Mod</h3>
         <p>Bu modda, oyuncu yapay zeka (AI) ile karşılaşır. AI, tahta boyutuna göre farklı stratejiler kullanır.</p>
         <h3>İki Oyunculu Mod</h3>
         <p>Bu modda, iki oyuncu aynı cihaz üzerinden sırayla hamle yaparak oynar. Oyuncular X ve O sembollerini kullanır ve sırayla hamle yaparlar. Oyun, bir oyuncu kazandığında veya beraberlik durumunda sona erer.</p>
-        <h2>Oyun Mantığı ve AI Stratejisi (Detaylı Açıklama)</h2>
+        <h2>Oyun Mantığı ve AI Stratejisi </h2>
         <h3>Hamle Sıralaması ve Oyun Akışı</h3>
         <ul>
             <li>Oyun, klasik XOX (Tic-Tac-Toe) mantığıyla çalışır. Tahta boyutu 3x3'ten 10x10'a kadar seçilebilir.</li>
@@ -144,7 +163,7 @@
         <h3>Uyarı ve Bildirimler</h3>
         <ul>
             <li>Oyun sonunda ekranda büyük ve odaklı bir şekilde "Kazandınız!", "AI Kazandı!", "Beraberlik!" veya "Erken Beraberlik!" mesajı gösterilir.</li>
-            <li>Çıkış yaparken veya sekme kapatılamadığında kullanıcıya uyarı mesajı gösterilir: <br><b>"Tarayıcı güvenliği nedeniyle sekme kapatılamadı. Lütfen sekmeyi manuel olarak kapatın veya Ana Sayfa butonunu kullanın."</b></li>
+            <li>Çıkış yaparken veya sekme kapatılamadığında kullanıcıya uyarı mesajı gösterilir: <br><b>"Tarayıcı güvenliği nedeniyle sekme kapatılamadı. Lütfen sekmeyi manuel olarak kapatın."</b></li>
         </ul>
     </div>
     <footer>
@@ -192,7 +211,7 @@
             window.open('', '_self', '');
             window.close();
             setTimeout(function() {
-                alert('Tarayıcı güvenliği nedeniyle sekme kapatılamadı. Lütfen sekmeyi manuel olarak kapatın veya Ana Sayfa butonunu kullanın.');
+                alert('Tarayıcı güvenliği nedeniyle sekme kapatılamadı. Lütfen sekmeyi manuel olarak kapatın.');
             }, 300);
         }
     </script>
