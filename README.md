@@ -129,7 +129,7 @@ Geliştirici ile iletişim kurulabilecek sayfa:
 - Sosyal medya bağlantıları
 - İletişim formu
 
-> ![İletişim Sayfası](https://github.com/user-attachments/assets/858892ec-bf1d-4ef5-a308-197e880b8800)
+> ![İletişim Sayfası](https://i.imgur.com/HxZkkhh.png)
 
 ### Mobil Uyumluluk
 Tüm sayfalar responsive tasarıma sahiptir:
